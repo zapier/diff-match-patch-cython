@@ -18,14 +18,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
-import imp
+try:
+    import pyximport
+    pyximport.install()
+except ImportError:
+    raise Exception('Running tests expects Cython!')
+
 import sys
 import time
 import unittest
 import diff_match_patch as dmp_module
-# Force a module reload.  Allows one to edit the DMP module and rerun the tests
-# without leaving the Python interpreter.
-imp.reload(dmp_module)
 
 class DiffMatchPatchTest(unittest.TestCase):
 
