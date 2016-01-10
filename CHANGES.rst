@@ -1,6 +1,7 @@
 Version 20121119
 ----------------
 Upstream release
+Added Cython support.
 
 Version 20120106
 ----------------

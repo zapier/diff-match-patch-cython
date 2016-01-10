@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 from setuptools import setup, find_packages
+from Cython.Build import cythonize
 import os
 import sys
 
@@ -14,12 +15,14 @@ else:
     subdir = 'python2'
 
 setup(
-    name='diff-match-patch',
+    name='diff-match-patch-cython',
     version='20121119',
     description = "The Diff Match and Patch libraries offer robust algorithms to perform the operations required for synchronizing plain text.",
     long_description = read('README.rst') + "\n\n" + read("CHANGES.rst"),
     packages = ['diff_match_patch'],
     package_dir = {'': subdir},
+    ext_modules = cythonize(
+        os.path.join(subdir, 'diff_match_patch/diff_match_patch.pyx')),
     author='Neil Fraser',
     url='http://code.google.com/p/google-diff-match-patch/',
     test_suite='diff_match_patch.diff_match_patch_test',
