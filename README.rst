@@ -1,6 +1,14 @@
-================
-diff-match-patch
-================
+=======================
+diff-match-patch-cython
+=======================
+
+Install with `pip install diff-match-patch-cython` and then import like normal `import diff_match_patch`.
+
+Build with Cython - mucho faster.
+
+Python bundle documentation on BitBucket:
+
+https://bitbucket.org/spookylukey/diff-match-patch
 
 Documentation on the Google site:
 
