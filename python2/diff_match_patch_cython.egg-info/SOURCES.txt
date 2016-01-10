@@ -14,5 +14,5 @@ python2/diff_match_patch_cython.egg-info/SOURCES.txt
 python2/diff_match_patch_cython.egg-info/dependency_links.txt
 python2/diff_match_patch_cython.egg-info/top_level.txt
 python3/diff_match_patch/__init__.py
-python3/diff_match_patch/diff_match_patch.py
+python3/diff_match_patch/diff_match_patch.pyx
 python3/diff_match_patch/diff_match_patch_test.py

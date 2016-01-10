@@ -19,9 +19,15 @@ else:
     subdir = 'python2'
 
 if have_cython:
-    ext_modules = [Extension('diff_match_patch', [os.path.join(subdir, 'diff_match_patch/diff_match_patch.pyx')])]
+    ext_modules = [
+        Extension('diff_match_patch/diff_match_patch',
+                  [os.path.join(subdir, 'diff_match_patch/diff_match_patch.pyx')])
+    ]
 else:
-    ext_modules = [Extension('diff_match_patch', [os.path.join(subdir, 'diff_match_patch/diff_match_patch.c')])]
+    ext_modules = [
+        Extension('diff_match_patch/diff_match_patch',
+                  [os.path.join(subdir, 'diff_match_patch/diff_match_patch.c')])
+    ]
 
 setup(
     name='diff-match-patch-cython',
@@ -50,5 +56,5 @@ setup(
         "Programming Language :: Python :: 3.1",
         "Programming Language :: Python :: 3.2",
         "Programming Language :: Python :: 3.3",
-        ]
+    ]
 )
