@@ -18,6 +18,12 @@ See the License for the specific language governing permissions and
 limitations under the License.
 """
 
+try:
+    import pyximport
+    pyximport.install()
+except ImportError:
+    raise Exception('Running tests expects Cython!')
+
 import sys
 import time
 import unittest
