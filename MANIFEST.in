@@ -4,4 +4,8 @@ include README.original.txt
 include LICENCE
 # Need to include the other versions stuff
 recursive-include python2 *.py
+recursive-include python2 *.pyx
+recursive-include python2 *.c
 recursive-include python3 *.py
+recursive-include python3 *.pyx
+recursive-include python3 *.c

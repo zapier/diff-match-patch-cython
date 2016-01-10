@@ -1,18 +1,27 @@
 #!/usr/bin/env python
-from setuptools import setup, find_packages
-from Cython.Build import cythonize
+from setuptools import setup, Extension
 import os
 import sys
 
+have_cython = False
+try:
+    from Cython.Distutils import build_ext as _build_ext
+    have_cython = True
+except ImportError:
+    from setuptools.command.build_ext import build_ext as _build_ext
 
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
-
 
 if sys.version_info >= (3,):
     subdir = 'python3'
 else:
     subdir = 'python2'
+
+if have_cython:
+    ext_modules = [Extension('diff_match_patch', [os.path.join(subdir, 'diff_match_patch/diff_match_patch.pyx')])]
+else:
+    ext_modules = [Extension('diff_match_patch', [os.path.join(subdir, 'diff_match_patch/diff_match_patch.c')])]
 
 setup(
     name='diff-match-patch-cython',
@@ -21,8 +30,8 @@ setup(
     long_description = read('README.rst') + "\n\n" + read("CHANGES.rst"),
     packages = ['diff_match_patch'],
     package_dir = {'': subdir},
-    ext_modules = cythonize(
-        os.path.join(subdir, 'diff_match_patch/diff_match_patch.pyx')),
+    ext_modules = ext_modules,
+    cmdclass={'build_ext': _build_ext},
     author='Neil Fraser',
     url='http://code.google.com/p/google-diff-match-patch/',
     test_suite='diff_match_patch.diff_match_patch_test',
